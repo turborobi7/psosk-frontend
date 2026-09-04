@@ -2527,28 +2527,21 @@ function loadPatientUI() {
   }
   
   // ===== Iframe ব্যবহার করে লোড করুন =====
-  google.script.run
-    .withSuccessHandler(function(scriptUrl) {
-      var iframe = document.createElement('iframe');
-      iframe.src = scriptUrl + '?page=patients&email=' + encodeURIComponent(USER_EMAIL);
-      iframe.style.width = '100%';
-      iframe.style.height = '800px';
-      iframe.style.border = 'none';
-      iframe.style.borderRadius = '8px';
-      iframe.style.background = '#f0f4f8';
-      container.innerHTML = '';
-      container.appendChild(iframe);
-      
-      // একটু পরে আবার সাইজ অ্যাডজাস্ট
-      setTimeout(function() {
-        iframe.style.height = 'auto';
-        iframe.style.minHeight = '800px';
-      }, 500);
-    })
-    .withFailureHandler(function(error) {
-      container.innerHTML = '<div style="text-align:center;padding:40px;color:#EA4335;">❌ রোগী ব্যবস্থাপনা লোড করতে ব্যর্থ: ' + error + '</div>';
-    })
-    .getScriptUrl();
+    // ===== Iframe ব্যবহার করে লোড করুন (একই GitHub সাইটের static ফাইল থেকে) =====
+  var iframe = document.createElement('iframe');
+  iframe.src = 'PatientManagementUI.html?email=' + encodeURIComponent(USER_EMAIL);
+  iframe.style.width = '100%';
+  iframe.style.height = '800px';
+  iframe.style.border = 'none';
+  iframe.style.borderRadius = '8px';
+  iframe.style.background = '#f0f4f8';
+  container.innerHTML = '';
+  container.appendChild(iframe);
+
+  setTimeout(function() {
+    iframe.style.height = 'auto';
+    iframe.style.minHeight = '800px';
+  }, 500);
 }
 
 function navigateTo(tab) { showTab(tab); closeProfileMenu(); }

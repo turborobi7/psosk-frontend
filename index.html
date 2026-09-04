@@ -825,18 +825,11 @@
           if (result.success) {
             showToast('✅ লগইন সফল!', 'success');
             localStorage.setItem('userEmail', result.email);
-            google.script.run
-              .withSuccessHandler(function(url) {
-                var target = url + '?page=dashboard&email=' + encodeURIComponent(result.email);
-                try { window.top.location.href = target; } catch (navErr) {
-                  console.warn('Auto-redirect blocked by sandbox:', navErr);
-                }
-                setTimeout(function() { showContinueLink_(target); }, 400);
-              })
-              .withFailureHandler(function(error) {
-                showToast('❌ Dashboard এ যেতে সমস্যা হয়েছে: ' + (error.message || error), 'error');
-              })
-              .getScriptUrl();
+                        var target = 'Dashboard.html?email=' + encodeURIComponent(result.email);
+            try { window.top.location.href = target; } catch (navErr) {
+              console.warn('Auto-redirect blocked by sandbox:', navErr);
+            }
+            setTimeout(function() { showContinueLink_(target); }, 400);
           } else {
             showToast('❌ ' + result.error, 'error');
           }

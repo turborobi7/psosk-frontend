@@ -21,7 +21,7 @@
   'use strict';
 
   // 👇👇👇 এখানে তোমার Apps Script Web App URL বসাও 👇👇👇
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziY4tfEkRqFlwpiZPFL27rUoppGsIBqdOS9-hTiVxp3qsisy4-RTUhpxGFCWmMcYua/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwqZEqYx5XmBLCOOacf8v5AydbHkObLgUBGEjA1jXS8d3hH03XKOWuGn2s89lfWyq9/exec';
   // 👆👆👆 শেষে অবশ্যই /exec থাকতে হবে 👆👆👆
 
   function callServer(fnName, args, onSuccess, onFailure) {
